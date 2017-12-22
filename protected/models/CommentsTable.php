@@ -103,4 +103,26 @@ class CommentsTable extends CActiveRecord
     {
         return parent::model($className);
     }
+
+    public function beforeSave() {
+        if($this->isNewRecord) { 
+            $this->created_at = time();
+        }
+        $this->updated_at = time();
+        return parent::beforeSave();
+    }
+
+    public function updateColumns($column_value_array) {
+        $column_value_array['updated_at'] = time();
+        foreach($column_value_array as $column_name => $column_value)
+            $this->$column_name = $column_value;
+        $this->update(array_keys($column_value_array));
+    }
+
+    public static function create($attributes) {
+        $model = new CommentsTable;
+        $model->attributes = $attributes;
+        $model->save();
+        return $model;
+    }
 }

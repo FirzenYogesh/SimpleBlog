@@ -13,7 +13,14 @@ class BlogController extends Controller
 	public function actionPostView($id)
 	{
 		$post=PostsTable::model()->findByPk($id);
-		echo CJSON::encode($post);
+		$data = array(
+			'id'=>$post->id,
+			'author'=>$post->author,
+			'title'=>$post->title,
+			'category_id'=>$post->category_id,
+			'comments'=>CJSON::encode($post->comments)
+		);
+		echo CJSON::encode($data);
 	}
 
 	public function actionPostCreate()
@@ -27,14 +34,12 @@ class BlogController extends Controller
 		}
 		else
 		{
-			$milliseconds = round(microtime(true) * 1000);
-			$post->author = $_GET['author'];
-			$post->title = $_GET['title'];
-			$post->content = $_GET['content'];
-			$post->category_id = $_GET['category_id'];
-			$post->created_at = $milliseconds;
-			$post->updated_at = $milliseconds;
-			$post->save();
+			PostsTable::create(array(
+				"author"=>$_GET['author'],
+				"title"=>$_GET['title'],
+				"content"=>$_GET['content'],
+				"category_id"=>$_GET['category_id']
+			));
 			$retstatus['statusCode'] = 1;
 			$retstatus['statusMessage'] = "Blog Post Successful";
 		}
@@ -45,14 +50,16 @@ class BlogController extends Controller
 	public function actionCommentCreate()
 	{
 		$retstatus = array();
-		$comment = new CommentsTable;
-		$milliseconds = round(microtime(true) * 1000);
+		CommentsTable::create(array(
+			"author"=>$_GET['author'],
+			"comment"=>$_GET['comment'],
+			"post_id"=>$_GET['post_id']
+		));
+		/*$comment = new CommentsTable;
 		$comment->author = $_GET['author'];
 		$comment->comment = $_GET['comment'];
 		$comment->post_id = $_GET['post_id'];
-		$comment->created_at = $milliseconds;
-		$comment->updated_at = $milliseconds;
-		$comment->save();
+		$comment->save();*/
 		$retstatus['statusCode'] = 1;
 		$retstatus['statusMessage'] = "Comment Post Successful";
 		echo json_encode($retstatus);
