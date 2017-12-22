@@ -46,20 +46,20 @@ class BlogController extends Controller
 	public function actionPostCreate()
 	{
 		$retstatus = array();
-		$post = new PostsTable;
-		if($post->exists("title=:title",array(':title'=>$_GET['title'])))
-		{
-			$retstatus['statusCode'] = 0;
-			$retstatus['statusMessage'] = "This Post already exists";
-		}
-		else
-		{
-			PostsTable::create(array(
+		$post = PostsTable::create(array(
 				"author"=>$_GET['author'],
 				"title"=>$_GET['title'],
 				"content"=>$_GET['content'],
 				"category_id"=>$_GET['category_id']
 			));
+		if($post->hasErrors(NULL))
+		{
+			$retstatus['statusCode'] = 0;
+			$retstatus['statusMessage'] = CJSON::encode($post->getErrors(NULL));
+		}
+		else
+		{
+			
 			$retstatus['statusCode'] = 1;
 			$retstatus['statusMessage'] = "Blog Post Successful";
 		}
@@ -70,18 +70,21 @@ class BlogController extends Controller
 	public function actionCommentCreate()
 	{
 		$retstatus = array();
-		CommentsTable::create(array(
+		$post = CommentsTable::create(array(
 			"author"=>$_GET['author'],
 			"comment"=>$_GET['comment'],
 			"post_id"=>$_GET['post_id']
 		));
-		/*$comment = new CommentsTable;
-		$comment->author = $_GET['author'];
-		$comment->comment = $_GET['comment'];
-		$comment->post_id = $_GET['post_id'];
-		$comment->save();*/
-		$retstatus['statusCode'] = 1;
-		$retstatus['statusMessage'] = "Comment Post Successful";
+		if($post->hasErrors(NULL))
+		{
+			$retstatus['statusCode'] = 0;
+			$retstatus['statusMessage'] = CJSON::encode($post->getErrors(NULL));
+		}
+		else
+		{
+			$retstatus['statusCode'] = 1;
+			$retstatus['statusMessage'] = "Comment Post Successful";
+		}
 		echo json_encode($retstatus);
 	}
 }

@@ -118,27 +118,6 @@ class PostsTable extends CActiveRecord
         return 'id';
     }
 
-    /*protected function afterSave()
-    {
-        if($this->hasEventHandler('onAfterSave'))
-            $this->onAfterSave(new CEvent($this));
-    }
-
-    protected function beforeSave()
-    {
-        $this->$updated_at = round(microtime(true) * 1000);
-        if($this->exists("id=:id", array(":id", $this->$id))==false){
-            $this->$created_at = $this->$updated_at ;
-        }
-        if($this->hasEventHandler('onBeforeSave'))
-        {
-            $event=new CModelEvent($this);
-            $this->onBeforeSave($event);
-            return $event->isValid;
-        }
-        else
-            return true;
-    }*/
     public function beforeSave() {
         if($this->isNewRecord) { 
             $this->created_at = time();
