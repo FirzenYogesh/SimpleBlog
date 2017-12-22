@@ -55,7 +55,11 @@ class BlogController extends Controller
 		if($post->hasErrors(NULL))
 		{
 			$retstatus['statusCode'] = 0;
-			$retstatus['statusMessage'] = CJSON::encode($post->getErrors(NULL));
+			$retstatus['statusMessage'] = array();
+			foreach ($post->getErrors() as $key => $value) {
+				$arr = array($key => $value);
+				array_push($retstatus['statusMessage'], $arr);
+			}
 		}
 		else
 		{

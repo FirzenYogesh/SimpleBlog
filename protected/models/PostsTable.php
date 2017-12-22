@@ -41,6 +41,7 @@ class PostsTable extends CActiveRecord
             array('author, title, content', 'required'),
             array('category_id', 'numerical', 'integerOnly'=>true),
             array('author, title', 'length', 'max'=>255),
+            array('title','checkUniqueness'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, author, title, category_id', 'safe', 'on'=>'search'),
@@ -140,4 +141,10 @@ class PostsTable extends CActiveRecord
         return $model;
     }
     
+    public function checkUniqueness($attribute, $params)
+    {
+        $model = PostsTable::model()->find('title=:title', array(':title'=>$this->title));
+        if($model != null)
+            $this->addError('title',"This Title already exists");
+    }
 }
