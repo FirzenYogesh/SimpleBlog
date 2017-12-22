@@ -17,9 +17,18 @@ class BlogController extends Controller
 			'id'=>$post->id,
 			'author'=>$post->author,
 			'title'=>$post->title,
-			'category_id'=>$post->category_id,
-			'comments'=>CJSON::encode($post->comments)
+			'category_id'=>$post->category_id
 		);
+		$data['comments'] = array();
+		foreach ($post->comments as $c)
+		{
+			$arr = array(
+				'id'=> $c->id,
+				'comment'=> $c->comment,
+				'author'=> $c->author
+			);
+			array_push($data['comments'],$arr);
+		}
 		echo CJSON::encode($data);
 	}
 
