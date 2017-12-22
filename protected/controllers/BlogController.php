@@ -7,7 +7,18 @@ class BlogController extends Controller
 		$criteria = new CDbCriteria;
 		$criteria->select = array('id','author','title','category_id');
 		$posts=PostsTable::model()->findAll($criteria);
-		echo CJSON::encode($posts);
+		$data = array();
+		foreach ($posts as $p) 
+		{
+			$arr = array(
+				'id' => $p->id,
+				'author' => $p->author,
+				'title' => $p->title,
+				'category_id' => $p->category_id 
+			);	
+			array_push($data, $arr);
+		}
+		echo CJSON::encode($data);
 	}
 
 	public function actionPostView($id)
