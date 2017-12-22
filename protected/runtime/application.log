@@ -1,0 +1,90 @@
+2017/12/21 15:42:41 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /var/www/yii/framework/db/CDbConnection.php:399
+Stack trace:
+#0 /var/www/yii/framework/db/CDbConnection.php(347): CDbConnection->open()
+#1 /var/www/yii/framework/db/CDbConnection.php(325): CDbConnection->setActive(true)
+#2 /var/www/yii/framework/base/CModule.php(394): CDbConnection->init()
+#3 /var/www/yii/framework/cli/commands/MigrateCommand.php(472): CModule->getComponent('db')
+#4 /var/www/yii/framework/cli/commands/MigrateCommand.php(481): MigrateCommand->getDbConnection()
+#5 /var/www/yii/framework/cli/commands/MigrateCommand.php(512): MigrateCommand->getMigrationHistory(-1)
+#6 /var/www/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 [internal function]: MigrateCommand->actionUp(Array)
+#8 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#9 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#10 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#11 /var/www/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#12 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#13 /var/www/SimpleBlog/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#14 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
+#15 {main}
+---
+2017/12/21 15:42:57 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'SimpleBlog.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2017/12/21 15:43:00 [error] [exception.ParseError] ParseError: syntax error, unexpected '}' in /var/www/SimpleBlog/protected/migrations/m171221_100334_create_category_table.php:19
+Stack trace:
+#0 /var/www/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m171221_100334_...')
+#1 /var/www/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m171221_100334_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /var/www/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#8 /var/www/SimpleBlog/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#9 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
+#10 {main}
+---
+2017/12/21 15:43:53 [error] [exception.ParseError] ParseError: syntax error, unexpected '}' in /var/www/SimpleBlog/protected/migrations/m171221_100334_create_category_table.php:19
+Stack trace:
+#0 /var/www/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m171221_100334_...')
+#1 /var/www/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m171221_100334_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /var/www/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#8 /var/www/SimpleBlog/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#9 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
+#10 {main}
+---
+2017/12/21 15:44:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '}' in /var/www/SimpleBlog/protected/migrations/m171221_100334_create_category_table.php:19
+Stack trace:
+#0 /var/www/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m171221_100334_...')
+#1 /var/www/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m171221_100334_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /var/www/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#8 /var/www/SimpleBlog/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#9 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
+#10 {main}
+---
+2017/12/21 15:47:13 [error] [exception.ParseError] ParseError: syntax error, unexpected '}' in /var/www/SimpleBlog/protected/migrations/m171221_100334_create_category_table.php:19
+Stack trace:
+#0 /var/www/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m171221_100334_...')
+#1 /var/www/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m171221_100334_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /var/www/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#8 /var/www/SimpleBlog/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#9 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
+#10 {main}
+---
+2017/12/21 15:48:25 [error] [exception.ParseError] ParseError: syntax error, unexpected '}' in /var/www/SimpleBlog/protected/migrations/m171221_100334_create_category_table.php:19
+Stack trace:
+#0 /var/www/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m171221_100334_...')
+#1 /var/www/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m171221_100334_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /var/www/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#8 /var/www/SimpleBlog/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#9 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
+#10 {main}
+---
