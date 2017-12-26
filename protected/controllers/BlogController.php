@@ -2,9 +2,7 @@
 
 class BlogController extends Controller {
 	public function actionIndex() {
-		/*$criteria = new CDbCriteria;
-		$criteria->select = array('id', 'author', 'title', 'category_id');*/
-		$posts = PostsTable::model()->findAll();
+		$posts = Post::model()->findAll();
 		$data = array();
 		foreach ($posts as $p) {
 			$arr = array(
@@ -13,7 +11,7 @@ class BlogController extends Controller {
 				'title' => $p->title,
 				'category' => array(
 					'category_id' => $p->category_id,
-					//'category_name' => $p->category->category_name,
+					//'category_name' => $p->category->name,
 				),
 			);
 			array_push($data, $arr);
@@ -22,14 +20,14 @@ class BlogController extends Controller {
 	}
 
 	public function actionViewPost($id) {
-		$post = PostsTable::model()->findByPk($id);
+		$post = Post::model()->findByPk($id);
 		$data = array(
 			'id' => $post->id,
 			'author' => $post->author,
 			'title' => $post->title,
 			'category' => array(
 				'category_id' => $post->category->id,
-				'category_name' => $post->category->category_name,
+				'category_name' => $post->category->name,
 			),
 		);
 		$data['comments'] = array();
@@ -46,11 +44,11 @@ class BlogController extends Controller {
 
 	public function actionCreatePost() {
 		$retstatus = array();
-		$post = PostsTable::create(array(
-			"author" => $_GET['author'],
-			"title" => $_GET['title'],
-			"content" => $_GET['content'],
-			"category_id" => $_GET['category_id'],
+		$post = Post::create(array(
+			"author" => $_POST['author'],
+			"title" => $_POST['title'],
+			"content" => $_POST['content'],
+			"category_id" => $_POST['category_id'],
 		));
 		if ($post->hasErrors(NULL)) {
 			$retstatus['statusCode'] = 0;
@@ -70,26 +68,26 @@ class BlogController extends Controller {
 
 	public function actionUpdatePost($id) {
 		$retstatus = array();
-		$post = PostsTable::model()->findByPk($id);
-		if (isset($_GET['content'])) {
+		$post = Post::model()->findByPk($id);
+		if (isset($_POST['content'])) {
 			$post->updateColumns(array(
-				'content' => $_GET['content'],
+				'content' => $_POST['content'],
 			));
 			if (!$post->hasErrors(NULL)) {
 				$retstatus['statusCode'] = 1;
 				$retstatus['statusMessage'] = "Update Content Successful";
 			}
 		}
-		if (isset($_GET['category_id'])) {
+		if (isset($_POST['category_id'])) {
 			$post->updateColumns(array(
-				'category_id' => $_GET['category_id'],
+				'category_id' => $_POST['category_id'],
 			));
 			if (!$post->hasErrors(NULL)) {
 				$retstatus['statusCode'] = 1;
 				$retstatus['statusMessage'] = "Update Category Successful";
 			}
 		}
-		if (isset($_GET['content']) && isset($_GET['category_id'])) {
+		if (isset($_POST['content']) && isset($_POST['category_id'])) {
 			if (!$post->hasErrors(NULL)) {
 				$retstatus['statusCode'] = 1;
 				$retstatus['statusMessage'] = "Update Post Successful";
@@ -104,10 +102,10 @@ class BlogController extends Controller {
 
 	public function actionCreateComment() {
 		$retstatus = array();
-		$post = CommentsTable::create(array(
-			"author" => $_GET['author'],
-			"comment" => $_GET['comment'],
-			"post_id" => $_GET['post_id'],
+		$post = Comment::create(array(
+			"author" => $_POST['author'],
+			"comment" => $_POST['comment'],
+			"post_id" => $_POST['post_id'],
 		));
 		if ($post->hasErrors(NULL)) {
 			$retstatus['statusCode'] = 0;
@@ -121,10 +119,10 @@ class BlogController extends Controller {
 
 	public function actionUpdateComment($id) {
 		$retstatus = array();
-		$post = CommentsTable::model()->findByPk($id);
-		if (isset($_GET['comment'])) {
+		$post = Comment::model()->findByPk($id);
+		if (isset($_POST['comment'])) {
 			$post->updateColumns(array(
-				'comment' => $_GET['comment'],
+				'comment' => $_POST['comment'],
 			));
 			if ($post->hasErrors(NULL)) {
 				$retstatus['statusCode'] = 0;
@@ -142,8 +140,8 @@ class BlogController extends Controller {
 
 	public function actionAddCategory() {
 		$retstatus = array();
-		$post = CategoryTable::create(array(
-			"category_name" => $_GET['category_name'],
+		$post = Category::create(array(
+			"name" => $_POST['name'],
 		));
 		if ($post->hasErrors(NULL)) {
 			$retstatus['statusCode'] = 0;

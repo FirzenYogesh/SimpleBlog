@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "category_table".
+ * This is the model class for table "category".
  *
- * The followings are the available columns in table 'category_table':
+ * The followings are the available columns in table 'category':
  * @property integer $id
  * @property string $category_name
  * @property integer $created_at
  * @property integer $updated_at
  */
-class CategoryTable extends CActiveRecord {
+class Category extends CActiveRecord {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName() {
-		return 'category_table';
+		return 'category';
 	}
 
 	/**
@@ -24,13 +24,13 @@ class CategoryTable extends CActiveRecord {
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('category_name', 'required'),
+			array('name', 'required'),
 			array('created_at, updated_at', 'numerical', 'integerOnly' => true),
-			array('category_name', 'length', 'max' => 255),
-			array('category_name', 'checkUniqueness'),
+			array('name', 'length', 'max' => 255),
+			array('name', 'checkUniqueness'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, category_name, created_at, updated_at', 'safe', 'on' => 'search'),
+			array('id, name, created_at, updated_at', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -41,7 +41,7 @@ class CategoryTable extends CActiveRecord {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'posts' => array(self::HAS_MANY, 'PostsTable', 'category_id'),
+			'posts' => array(self::HAS_MANY, 'Post', 'category_id'),
 		);
 	}
 
@@ -51,7 +51,7 @@ class CategoryTable extends CActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => 'ID',
-			'category_name' => 'Category Name',
+			'name' => 'Name',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
@@ -75,7 +75,7 @@ class CategoryTable extends CActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('category_name', $this->category_name, true);
+		$criteria->compare('name', $this->category_name, true);
 		$criteria->compare('created_at', $this->created_at);
 		$criteria->compare('updated_at', $this->updated_at);
 
@@ -88,7 +88,7 @@ class CategoryTable extends CActiveRecord {
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return CategoryTable the static model class
+	 * @return Category the static model class
 	 */
 	public static function model($className = __CLASS__) {
 		return parent::model($className);
@@ -115,14 +115,14 @@ class CategoryTable extends CActiveRecord {
 	}
 
 	public static function create($attributes) {
-		$model = new CategoryTable;
+		$model = new Category;
 		$model->attributes = $attributes;
 		$model->save();
 		return $model;
 	}
 
 	public function checkUniqueness($attribute, $params) {
-		$model = CategoryTable::model()->find('category_name=:name', array(':name' => $this->category_name));
+		$model = Category::model()->find('name=:name', array(':name' => $this->name));
 		if ($model != null) {
 			$this->addError('title', "This Category already exists");
 		}

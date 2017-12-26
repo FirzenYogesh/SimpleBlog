@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "comments_table".
+ * This is the model class for table "comment".
  *
- * The followings are the available columns in table 'comments_table':
+ * The followings are the available columns in table 'comment':
  * @property integer $id
  * @property string $author
  * @property string $comment
@@ -11,12 +11,12 @@
  * @property integer $created_at
  * @property integer $updated_at
  */
-class CommentsTable extends CActiveRecord {
+class Comment extends CActiveRecord {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName() {
-		return 'comments_table';
+		return 'comment';
 	}
 
 	/**
@@ -41,7 +41,7 @@ class CommentsTable extends CActiveRecord {
 	public function relations() {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array('post' => array(self::BELONGS_TO, 'PostsTable', 'id'));
+		return array('post' => array(self::BELONGS_TO, 'Post', 'id'));
 	}
 
 	/**
@@ -74,7 +74,6 @@ class CommentsTable extends CActiveRecord {
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria = new CDbCriteria;
-
 		$criteria->compare('id', $this->id);
 		$criteria->compare('author', $this->author, true);
 		$criteria->compare('comment', $this->comment, true);
@@ -114,7 +113,7 @@ class CommentsTable extends CActiveRecord {
 	}
 
 	public static function create($attributes) {
-		$model = new CommentsTable;
+		$model = new Comment;
 		$model->attributes = $attributes;
 		$model->save();
 		return $model;

@@ -88,3 +88,4 @@ Stack trace:
 #9 /var/www/SimpleBlog/protected/yiic(4): require_once('/var/www/Simple...')
 #10 {main}
 ---
+2017/12/26 16:36:56 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'SimpleBlog.category_table' doesn't exist. The SQL statement executed was: SHOW CREATE TABLE `category_table`.

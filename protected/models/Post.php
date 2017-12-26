@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "posts_table".
+ * This is the model class for table "post".
  *
- * The followings are the available columns in table 'posts_table':
+ * The followings are the available columns in table 'post':
  * @property integer $id
  * @property string $author
  * @property string $title
@@ -12,12 +12,12 @@
  * @property integer $created_at
  * @property integer $updated_at
  */
-class PostsTable extends CActiveRecord {
+class Post extends CActiveRecord {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName() {
-		return 'posts_table';
+		return 'post';
 	}
 
 	/**
@@ -52,8 +52,8 @@ class PostsTable extends CActiveRecord {
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'comments' => array(self::HAS_MANY, 'CommentsTable', 'post_id'),
-			'category' => array(self::BELONGS_TO, 'CategoryTable', 'id'),
+			'comments' => array(self::HAS_MANY, 'Comment', 'post_id'),
+			'category' => array(self::BELONGS_TO, 'Category', 'id'),
 		);
 	}
 
@@ -70,6 +70,7 @@ class PostsTable extends CActiveRecord {
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 			'comments' => 'Comments',
+			'category' => 'Category',
 		);
 	}
 
@@ -89,7 +90,6 @@ class PostsTable extends CActiveRecord {
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria = new CDbCriteria;
-
 		$criteria->compare('id', $this->id);
 		$criteria->compare('author', $this->author, true);
 		$criteria->compare('title', $this->title, true);
@@ -104,7 +104,7 @@ class PostsTable extends CActiveRecord {
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return PostsTable the static model class
+	 * @return Posts the static model class
 	 */
 	public static function model($className = __CLASS__) {
 		return parent::model($className);
@@ -131,14 +131,14 @@ class PostsTable extends CActiveRecord {
 	}
 
 	public static function create($attributes) {
-		$model = new PostsTable;
+		$model = new Posts;
 		$model->attributes = $attributes;
 		$model->save();
 		return $model;
 	}
 
 	public function checkUniqueness($attribute, $params) {
-		$model = PostsTable::model()->find('title=:title', array(':title' => $this->title));
+		$model = Post::model()->find('title=:title', array(':title' => $this->title));
 		if ($model != null) {
 			$this->addError('title', "This Title already exists");
 		}
