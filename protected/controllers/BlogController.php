@@ -2,16 +2,19 @@
 
 class BlogController extends Controller {
 	public function actionIndex() {
-		$criteria = new CDbCriteria;
-		$criteria->select = array('id', 'author', 'title', 'category_id');
-		$posts = PostsTable::model()->findAll($criteria);
+		/*$criteria = new CDbCriteria;
+		$criteria->select = array('id', 'author', 'title', 'category_id');*/
+		$posts = PostsTable::model()->findAll();
 		$data = array();
 		foreach ($posts as $p) {
 			$arr = array(
 				'id' => $p->id,
 				'author' => $p->author,
 				'title' => $p->title,
-				'category_id' => $p->category_id,
+				'category' => array(
+					'category_id' => $p->category_id,
+					//'category_name' => $p->category->category_name,
+				),
 			);
 			array_push($data, $arr);
 		}
@@ -24,7 +27,10 @@ class BlogController extends Controller {
 			'id' => $post->id,
 			'author' => $post->author,
 			'title' => $post->title,
-			'category_id' => $post->category_id,
+			'category' => array(
+				'category_id' => $post->category->id,
+				'category_name' => $post->category->category_name,
+			),
 		);
 		$data['comments'] = array();
 		foreach ($post->comments as $c) {
@@ -130,6 +136,26 @@ class BlogController extends Controller {
 		} else {
 			$retstatus['statusCode'] = 1;
 			$retstatus['statusMessage'] = "No Changes were given";
+		}
+		echo json_encode($retstatus);
+	}
+
+	public function actionAddCategory() {
+		$retstatus = array();
+		$post = CategoryTable::create(array(
+			"category_name" => $_GET['category_name'],
+		));
+		if ($post->hasErrors(NULL)) {
+			$retstatus['statusCode'] = 0;
+			$retstatus['statusMessage'] = array();
+			foreach ($post->getErrors() as $key => $value) {
+				$arr = array($key => $value);
+				array_push($retstatus['statusMessage'], $arr);
+			}
+		} else {
+
+			$retstatus['statusCode'] = 1;
+			$retstatus['statusMessage'] = "Category Added Successful";
 		}
 		echo json_encode($retstatus);
 	}
