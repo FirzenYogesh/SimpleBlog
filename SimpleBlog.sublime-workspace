@@ -1,0 +1,347 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"categ",
+				"category_name"
+			],
+			[
+				"Cate",
+				"CategoryTable"
+			],
+			[
+				"Commen",
+				"CommentsTable"
+			],
+			[
+				"con",
+				"content"
+			],
+			[
+				"pos",
+				"post"
+			],
+			[
+				"ret",
+				"retstatus"
+			],
+			[
+				"arr",
+				"array\t$… = array (…)"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"cr",
+				"create"
+			],
+			[
+				"Pos",
+				"PostsTable"
+			],
+			[
+				"com",
+				"comments"
+			],
+			[
+				"Comm",
+				"CommentsTable"
+			],
+			[
+				"post",
+				"posts"
+			],
+			[
+				"ar",
+				"arrComments"
+			],
+			[
+				"re",
+				"retstatus"
+			],
+			[
+				"en",
+				"encode"
+			],
+			[
+				"cmd",
+				"cmdComment"
+			],
+			[
+				"ro",
+				"rows"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"sql",
+				"sqlComments"
+			],
+			[
+				"funnc",
+				"function"
+			],
+			[
+				"cate",
+				"category_table"
+			],
+			[
+				"NULL",
+				"NULL"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 13,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 560.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/SimpleBlog"
+	],
+	"file_history":
+	[
+		"//home/hitwicket1/required files/master-push-check.sh",
+		"/var/www/SimpleBlog/protected/controllers/SiteController.php",
+		"/var/www/SimpleBlog/protected/controllers/BlogController.php",
+		"/var/www/SimpleBlog/protected/models/CommentsTable.php",
+		"/var/www/SimpleBlog/protected/models/CategoryTable.php",
+		"/var/www/SimpleBlog/protected/models/PostsTable.php",
+		"//etc/group",
+		"/var/www/yii/framework/gii/generators/model/templates/default/model.php",
+		"/var/www/yii/framework/gii/generators/model/ModelCode.php",
+		"/home/hitwicket1/.config/sublime-text-3/Packages/phpcbf/phpcbf.sublime-settings",
+		"/home/hitwicket1/.config/sublime-text-3/Packages/phpcbf/Default (Linux).sublime-keymap",
+		"/var/www/SimpleBlog/protected/config/main.php",
+		"//etc/apache2/sites-available/000-default.conf",
+		"/var/www/SimpleBlog/.htaccess",
+		"/etc/apache2/sites-available/000-default.conf",
+		"/var/www/SimpleBlog/protected/models/LoginForm.php",
+		"/var/www/SimpleBlog/protected/models/ContactForm.php",
+		"/var/www/SimpleBlog/protected/config/CategoryTable.php",
+		"/var/www/SimpleBlog/protected/migrations/m171221_100350_create_comments_table.php",
+		"/var/www/SimpleBlog/protected/migrations/m171221_100334_create_category_table.php",
+		"/var/www/SimpleBlog/protected/migrations/m171221_100248_create_posts_table.php",
+		"/var/www/SimpleBlog/protected/config/database.php",
+		"/var/www/SimpleBlog/protected/config/test.php",
+		"/var/www/SimpleBlog/protected/config/console.php",
+		"/var/www/SimpleBlog/protected/migrations/m171221_094344_create_comments_table.php",
+		"/var/www/SimpleBlog/protected/migrations/m171221_094334_create_posts_table.php",
+		"/var/www/SimpleBlog/protected/migrations/m171221_0943",
+		"/var/www/testYii/protected/config/database.php",
+		"/var/www/testYii/protected/config/main.php",
+		"/var/www/testYii/protected/migrations/m171221_091018_create_test_table.php",
+		"/var/www/yii/framework/db/CDbConnection.php",
+		"/var/www/testYii/protected/migrations/m171221_090507_test_table.php",
+		"/etc/environment",
+		"/etc/apache2/apache2.conf"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\t\t\t\n",
+			"actionCreatePost",
+			"));\n",
+			"_POST",
+			"controller",
+			"Directory"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"_GET"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "SimpleBlog.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 253.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
